@@ -6,3 +6,6 @@ __pycache__/
 
 # Ignore all test.ipynb files
 test.ipynb
+
+# Ignore .venv directory (virtual environments)
+.venv/

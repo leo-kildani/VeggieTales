@@ -36,4 +36,4 @@ def home(batch_id=None):
     return render_template('index.html', gemini_response=gemini_response, analysis_html=analysis_html)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8000)
