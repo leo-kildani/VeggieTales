@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Avocado Batch Information</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css') }}"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Avocado Batch Information</h1>
+    </div>
+
+    <div class="container">
+      {% if gemini_response %}
+      <div class="product-card">
+        <div class="product-header">
+          <h2>Batch Details</h2>
+        </div>
+        <div class="product-body">
+          <div class="story-section">
+            <h3>Product Story</h3>
+            <p>{{ gemini_response.story }}</p>
+          </div>
+
+          <div class="score-section">
+            <div class="score-circle">
+              <span class="score-value">{{ gemini_response.score }}</span>
+            </div>
+            <div>
+              <h3>Sustainability Score</h3>
+              <p>
+                {% if gemini_response.score >= 80 %} Excellent sustainability
+                practices {% elif gemini_response.score >= 60 %} Good
+                sustainability practices with room for improvement {% elif
+                gemini_response.score >= 40 %} Average sustainability profile {%
+                else %} Below average sustainability profile {% endif %}
+              </p>
+            </div>
+          </div>
+
+          <div class="analysis-section">
+            <h3>Expert Analysis</h3>
+            <p>{{ gemini_response.analysis }}</p>
+          </div>
+        </div>
+      </div>
+      {% else %}
+      <div class="product-card">
+        <div class="product-header">
+          <h2>No Batch Selected</h2>
+        </div>
+        <div class="product-body no-data">
+          <p>Please select a batch ID to view information.</p>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>
