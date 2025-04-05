@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Avocado Batch Information</title>
+    <title>{{produce}} Batch Information</title>
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='css/index.css') }}"
@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="header">
-      <h1>Batch Information</h1>
+      <h1>{{produce}} Batch Information</h1>
     </div>
 
     <div class="container">
@@ -41,7 +41,6 @@
           </div>
 
           <div class="analysis-section">
-            <h3>Expert Analysis</h3>
             <div>{{ analysis_html | safe }}</div>
           </div>
         </div>
