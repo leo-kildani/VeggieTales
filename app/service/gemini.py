@@ -6,15 +6,24 @@ client = genai.Client(api_key=Config.GEMINI_API_KEY)
 
 def get_gemini_summary_rating(batch_json):
     prompt = f"""
-    You are a storyteller and product analyst. You will be given a JSON string describing a product batch, including details about its farming, delivery, and storage.
-    1. First, write a short but compelling story about the product. Highlight any unique aspects from the farm, environmental impact, transport, or shelf experience that would make a customer emotionally or ethically connected to it.
-    2. Then, analyze all available information and assign a score between 1 and 100 for the product's overall quality and sustainability. Be transparent and concise in how you derive the score based on the values in the JSON, and include an analysis of key factors that influenced your rating. Consider every aspect of the data. Write the analysis in a clear and structured manner using Markdown format. 
-    3. Finally, return the story, the score, and the score analysis in a JSON format with keys "story", "score", and "analysis". The score should be an integer between 1 and 100. 
-    Here is the JSON:
-    ```json
-    {batch_json}
-    ```
-    """    
+        You are a storyteller and product analyst. You will be provided with a JSON string containing information about a product batch, including details on farming, delivery, and storage. Please follow the steps below:
+
+        1. **Storytelling**: Craft a compelling narrative that brings the product to life. Focus on the unique aspects related to its farming, environmental impact, transport, or shelf experience. Highlight any elements that could emotionally or ethically engage the customer.
+
+        2. **Sustainability & Quality Analysis**: Based on the provided data, assign a score between 1 and 100 that reflects the product's overall quality and sustainability. Justify your score by analyzing the relevant factors in the JSON. Your analysis should be clear, concise, and structured in Markdown format, only including the following sections:
+        - # Expert Analysis
+        - ## Overall Score: [score] (1-100)
+        - ## Positive Factors
+        - ## Neutral Factors
+        - ## Negative Factors
+        - ## Areas for Improvement
+
+        3. **Return JSON Output**: Provide the story, score, and analysis in a structured JSON format with the keys "story", "score", and "analysis". Ensure the score is an integer between 1 and 100.
+
+        Here is the JSON to analyze:
+        ```json
+        {batch_json}
+        """
     response = client.models.generate_content(
         model="gemini-2.0-flash",
         contents=[prompt]
