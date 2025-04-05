@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="header">
-      <h1>Avocado Batch Information</h1>
+      <h1>Batch Information</h1>
     </div>
 
     <div class="container">
@@ -42,7 +42,7 @@
 
           <div class="analysis-section">
             <h3>Expert Analysis</h3>
-            <p>{{ gemini_response.analysis }}</p>
+            <div>{{ analysis_html | safe }}</div>
           </div>
         </div>
       </div>
