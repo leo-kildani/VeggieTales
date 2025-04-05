@@ -2,10 +2,6 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from config import Config
 import json
-import qrcode
-
-
-
 
 client = MongoClient(Config.MONGO_URI) # creates a connection to MongoDB Atlas cluster using username + PW
 
@@ -47,20 +43,3 @@ def update_batch(batch_id, gemini_data):
         return {"message": "Batch updated successfully"}
     else:
         return {"error": "Batch not found"}, 404
-
-#def generate_QR_Code(batch_id):
-#    qr = qrcode.QRCode(
-#        version=1,
-#        error_correction=qrcode.constants.ERROR_CORRECT_H,
-#        box_size=10,
-#        border=4,
-#    )
- #   qr.add_data(batch_id)
- #   qr.make(fit=True)
- #   img = qr.make_image(fill_color="black", back_color="white")
- #   img_path = f"qr_code_{batch_id}.png"
- #   img.save(img_path)
- #   return img_path
-
-#test = generate_QR_Code("67f096d6828f7d3c901cc7cb")
-#print(test)

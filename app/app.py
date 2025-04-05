@@ -1,7 +1,6 @@
 from flask import Flask, render_template, json
 from database.mongo_db import find_batch_by_ID, MongoJSONEncoder, update_batch
 from service.gemini import get_gemini_summary_rating
-from bson import ObjectId
 import json
 import markdown
 
