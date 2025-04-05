@@ -1,15 +1,21 @@
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from config import Config
-from bson import ObjectId
+import json
 
-client = MongoClient(Config.MONGO_URI)
+client = MongoClient(Config.MONGO_URI) # creates a connection to MongoDB Atlas cluster using username + PW
 
-db = client["VeggieTalesDB"]
-collection = db["Batches"]
+db = client["VeggieTalesDB"] # selects my database from the cluster
+collection = db["Batches"] # selects the collection of product_batches from the database
 
-def find_batch(batch_id):
-    """
-    Find a batch by its ID.
-    """
-    batch = collection.find_one({"batch_id": ObjectId(batch_id)})
-    return batch
+# Custom JSON encoder to handle MongoDB ObjectId
+class MongoJSONEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, ObjectId):
+            return str(obj)
+        return super().default(obj)
+
+def find_batch_by_ID(batch_id):
+   # Find the object within our database with the specified batch_id
+   result = collection.find_one({"_id": ObjectId(batch_id)})
+   return result
