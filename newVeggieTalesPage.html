@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VeggieTales - New Page</title>
+    <title>Produce Batch Information</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f8f8f8;
             margin: 0;
             padding: 0;
         }
@@ -17,30 +17,51 @@
             text-align: center;
             padding: 20px;
         }
-        .content {
+        .container {
             width: 80%;
             margin: auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .content h2 {
+        .batch {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .batch h2 {
             color: #333;
         }
-        .content p {
-            line-height: 1.6;
+        .batch-info {
+            margin-bottom: 15px;
         }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Welcome to VeggieTales</h1>
-    </header>
-    <div class="content">
-        <h2>About VeggieTales</h2>
-        <p>VeggieTales is a web application that provides detailed information about produce batches, including their origin, farming practices, and environmental impact.</p>
-        <p>Explore our APIs and web features to learn more about sustainable farming and produce tracking.</p>
+        .highlight {
+            font-weight: bold;
+        }
+        </style>
+    </head>
+    <body>
+
+        <header>
+        <h1>Produce Batch Information</h1>
+        </header>
+
+        <div class="container">
+        <div class="batch">
+        <h2>Batch #123 - Tomatoes</h2>
+        <div class="batch-info">
+            <p><span class="highlight">Farm Name:</span> Green Valley Farms</p>
+            <p><span class="highlight">Farm Location:</span> California, USA</p>
+            <p><span class="highlight">Plant Date:</span> 2023-01-15</p>
+            <p><span class="highlight">Harvest Date:</span> 2023-03-20</p>
+            <p><span class="highlight">Climate (°C):</span> 22°C</p>
+            <p><span class="highlight">Water Consumption:</span> 500 gallons</p>
+            <p><span class="highlight">Carbon Emissions:</span> 1.2 metric tons</p>
+            <p><span class="highlight">Pesticides Used:</span> None</p>
+            <p><span class="highlight">Soil Type:</span> Loamy</p>
+            <p><span class="highlight">Farm Certifications:</span> Organic Certified</p>
+        </div>
+        </div>
     </div>
 </body>
 </html>
