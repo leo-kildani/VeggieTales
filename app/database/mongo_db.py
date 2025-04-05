@@ -1,15 +1,24 @@
+from flask import Blueprint, jsonify #
 from pymongo import MongoClient
+from bson.objectid import ObjectId
 from config import Config
-from bson import ObjectId
 
-client = MongoClient(Config.MONGO_URI)
 
-db = client["VeggieTalesDB"]
-collection = db["Batches"]
+client = MongoClient(Config.MONGO_URI) # creates a connection to MongoDB Atlas cluster using username + PW
 
-def find_batch(batch_id):
-    """
-    Find a batch by its ID.
-    """
-    batch = collection.find_one({"batch_id": ObjectId(batch_id)})
-    return batch
+
+db = client["VeggieTalesDB"] # selects my database from the cluster
+collection = db["Batches"] # selects the collection of product_batches from the database
+
+
+
+def find_batch_by_ID(batch_id):
+   # Find the object within our database with the specified batch_id
+   result = collection.find_one({"_id": ObjectId(batch_id)})
+  
+   if result:
+       # Convert ObjectId to string for JSON serialization
+       result["_id"] = str(result["_id"])
+       return (result)
+   else:
+       return ({"error": "Batch not found"}), 404
