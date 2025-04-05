@@ -3,10 +3,11 @@ from database.mongo_db import find_batch_by_ID, MongoJSONEncoder, update_batch
 from service.gemini import get_gemini_summary_rating
 import json
 import markdown
+from werkzeug.middleware.proxy_fix import ProxyFix
 
 # Create the Flask application instance
 app = Flask(__name__)
-app.logger.setLevel('DEBUG')
+app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1, x_host=1, x_port=1)  # For handling reverse proxies like Heroku
 
 @app.route('/')
 @app.route('/<string:batch_id>')

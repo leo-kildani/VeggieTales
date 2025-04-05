@@ -1,0 +1,15 @@
+[Unit]
+Description=Vegeetales Flask Application
+After=network.target
+
+[Service]
+User=ec2-user
+WorkingDirectory=/home/ec2-user/vegeetales/app
+Environment="PATH=/home/ec2-user/vegeetales/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+EnvironmentFile=/home/ec2-user/vegeetales/.env
+ExecStart=/home/ec2-user/vegeetales/.venv/bin/gunicorn -w 4 'app:app'
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
