@@ -30,6 +30,39 @@ Key features:
 - **Gemini LLM** – Analyzes batch data to generate readable stories and calculate sustainability scores
 - **AWS EC2 + Nginx** – Hosting and deployment of the Flask application
 
+### Batch Data Schema in MongoDB Atlas
+
+```json
+batch {
+	batch_id:number,
+	produce: string,
+	farm: {
+		farm_name: string,
+		location: string,
+		plant_date: date,
+		harvest_date: date,
+		climate_celcius: number,
+		water_consumption_gallons: number,
+		carbon_emissions_metric_tons: number,
+		pesticides: list(string),
+		soil_type: string,
+		farm_certifications: list(string)
+	},
+	delivery: {
+		delivery_company_name: string,
+		delivery_duration: time,
+		delivery_distance: number,
+		transport_temp: number
+	},
+	store: {
+		store_name: string,
+		location: string,
+		shelf_temp: number,
+		date_shelved: date,
+	}
+}
+```
+
 ---
 
 ## 📁 Project Structure
