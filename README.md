@@ -1,20 +1,62 @@
-# VeggieTales
+# 🥦 VeggieTales Project
 
-## Project Overview
+## 👥 Authors
 
-This project is a Flask application with both an API and a web application component. It includes two APIs: one for communicating with MongoDB and another for communicating with the Gemini API.
+- **Leonardo Kildani** – leonardo.kildani@sjsu.edu
+- **Dylan Matthews** – dylan.matthews@sjsu.edu
+- **Jorge Zavala** – jorge.zavala@sjsu.edu
 
-## Project Structure
+---
 
-- `app/`: Contains the main application code.
-- `api/`: Contains the API logic.
-- `templates/`: Contains HTML templates for the web application.
-- `static/`: Contains static files like CSS and JavaScript.
-- `app.py`: The entry point for the Flask application.
+## 📖 Project Overview
 
-## Dependencies
+**VeggieTales** is a transparent and interactive system that enables consumers to trace the full journey of their produce — from farm to store.
 
-To run this project, you need the following Python packages (listed in `requirements.txt`):
-You can install these dependencies using:
-`pip install -r requirements.txt`
-`pip install -q -U google-genai`
+Each product batch is assigned a unique, scannable QR code. When scanned, the system retrieves and processes batch data, transforming it into a human-readable story using a large language model (LLM). In addition, the LLM calculates and assigns a **sustainability score**, offering users meaningful insight into the environmental impact of their food choices.
+
+Key features:
+
+- Batch-based product tracking
+- Farm-to-store lifecycle visibility
+- QR code integration
+- AI-generated storytelling and sustainability scoring
+
+---
+
+## 🛠 Tech Stack
+
+- **Flask** – Lightweight Python web framework for API/backend development
+- **MongoDB Atlas** – Cloud database for storing batch data
+- **Gemini LLM** – Analyzes batch data to generate readable stories and calculate sustainability scores
+- **AWS EC2 + Nginx** – Hosting and deployment of the Flask application
+
+---
+
+## 📁 Project Structure
+
+```
+VeggieTales/
+│
+├── app/
+│ ├── app.py # Main Flask app: defines routes, runs server
+│ ├── database/ # MongoDB connectivity and API logic
+│ ├── service/ # LLM API integration
+│ ├── static/ # Static assets (CSS, JS, images)
+│ └── templates/ # HTML templates (Flask Jinja2)
+│
+├── qr_codes/ # QR code generation scripts and output
+│
+└── LICENSE # MIT License
+```
+
+---
+
+## 🧪 Example QR Code
+
+![QR Code](qr_codes/qr_codes_output/batch_67f096d6828f7d3c901cc7cc.png)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE) file for more details.
