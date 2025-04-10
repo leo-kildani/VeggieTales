@@ -1,4 +1,6 @@
-# 🥦 VeggieTales Project
+# 🥦 VeggieTales Project (SF HACKS 2025)
+
+- DevPost: https://devpost.com/software/vegeetales
 
 ## 👥 Authors
 
